@@ -47,7 +47,7 @@ This step gets associated data for about 2/3 of the entities.
 2. NYC-DB: We already know Cuomo is very connected to the real estate industry, so check for matches here.
 Tables to pay special attention to: Acris, DOB jobs.
 
-3. Open Secrets: scrape based on donor names; their API is very limited. We're just looking for the "Occupation" column in most cases.
+3. Open Secrets: Use regex to find donor names that have 'PAC' in them. Scrape Open Secrets' PAC search page for all of the PACs that are in the 13,000 unique donors list: [](http://opensecrets.org/pac/search)
 
 4. Open Corporates: match registered addresses only. the API is good, but you must email and ask for an API key, and the API documentation is ridiculously, inexplicably, stupidly complicated.
 

@@ -16,7 +16,7 @@
 }
 
 .label {
-  font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font: 15px "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-anchor: middle;
   text-align: center;
   }
@@ -91,7 +91,7 @@ d3.json("./data.json", function(error, root) {
     .data(nodes)
     .enter().append("text")
       .attr("class", function(d) { return d.parent === root ? "label" : "nodelabel"})
-      .style("fill-opacity", function(d) { return (d.parent === root && d.value > 150000) ? 1 : 0; })
+      .style("fill-opacity", function(d) { return (d.parent === root && d.value > 400000) ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? "block" : "none"; })
       .text(function(d) { return d.data.name + d3.format("($,.2f")(d.value)})
       .each(insertLinebreaks);
@@ -115,13 +115,12 @@ d3.json("./data.json", function(error, root) {
 
     transition.selectAll("text")
       .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-        .style("fill-opacity", function(d) { if (d.parent === focus && d.value > 150000){return 1}
+        .style("fill-opacity", function(d) { if (d.parent === focus && d.parent != root && d.value > 150000){return 1}
+        	else if (d.parent === focus && d.parent === root && d.value > 400000){return 1}
         	else if (d.parent === focus && focus.children.length<10 && d.parent !== root){
         		return 1
         	}
-        	else if (d.parent === focus && !d.children){
-        		return 1
-        	}
+        	else if (d.parent === focus && !d.children && focus.children.length<50){return 1}
         	else{
         		return 0
         	}})

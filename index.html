@@ -91,7 +91,7 @@ d3.json("./data.json", function(error, root) {
     .data(nodes)
     .enter().append("text")
       .attr("class", function(d) { return d.parent === root ? "label" : "nodelabel"})
-      .style("fill-opacity", function(d) { return (d.parent === root && d.value > 400000) ? 1 : 0; })
+      .style("fill-opacity", function(d) { return (d.parent === root && d.value > 250000) ? 1 : 0; })
       .style("display", function(d) { return d.parent === root ? "block" : "none"; })
       .text(function(d) { return d.data.name + d3.format("($,.2f")(d.value)})
       .each(insertLinebreaks);

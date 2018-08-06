@@ -115,7 +115,7 @@ d3.json("./data.json", function(error, root) {
 
     transition.selectAll("text")
       .filter(function(d) { return d.parent === focus || this.style.display === "inline"; })
-        .style("fill-opacity", function(d) { if (d.parent === focus && d.parent != root && d.value > 150000){return 1}
+        .style("fill-opacity", function(d) { if (d.parent === focus && d.parent != root && d.value > 100000){return 1}
         	else if (d.parent === focus && d.parent === root && d.value > 400000){return 1}
         	else if (d.parent === focus && focus.children.length<10 && d.parent !== root){
         		return 1

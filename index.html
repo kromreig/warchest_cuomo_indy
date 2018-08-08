@@ -37,6 +37,7 @@ div.tooltip {
   text-align: center;
   text-anchor: middle;
   min-width: 80px;
+  font: 24px "Helvetica Neue", Helvetica, Arial, sans-serif;
   height: auto;
   padding: 10px;
   background: none repeat scroll 0 0 #EDE3DD;
@@ -89,17 +90,25 @@ d3.json("./data.json", function(error, root) {
       	div.transition()
          .duration(200)
          .style("opacity", .9);
-         if (d.parent===root){
-       div.html(d.data.name +":"+ "<br/>" + d3.format("($,.2f")(d.value))
+     if (d.parent===root){
+       div.html("Industry:" +"<br/>"+d.data.name +"<br/>" + d3.format("($,.2f")(d.value))
          .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 80) + "px")
-         .style("font", "34px Helvetica, Arial, sans-serif");
+         .style("top", (d3.event.pageY - 80) + "px");
+     }
+     else if (d.data.name === "Unknown Parent Org"){
+      div.html(d.parent.data.name +"<br/>"+  d3.format("($,.2f")(d.value))
+         .style("left", (d3.event.pageX) + "px")
+         .style("top", (d3.event.pageY - 80) + "px");
+     }
+     else if (d.children){
+     	div.html("Parent Organization:"+"<br/>"+d.data.name + "<br/>" + d3.format("($,.2f")(d.value))
+         .style("left", (d3.event.pageX) + "px")
+         .style("top", (d3.event.pageY - 80) + "px");
      }
      else{
-     	div.html(d.data.name +":"+ "<br/>" + d3.format("($,.2f")(d.value))
+     	div.html(d.data.name + "<br/>" + d3.format("($,.2f")(d.value))
          .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 80) + "px")
-         .style("font", "24px Helvetica, Arial, sans-serif")
+         .style("top", (d3.event.pageY - 80) + "px");
      }
       })
       .on("mouseout", function(d){
@@ -108,26 +117,7 @@ d3.json("./data.json", function(error, root) {
          .style("opacity", 0);
       	});
 
-  var text = g.selectAll("text")
-    .data(nodes)
-      .on("mouseover", function(d) {
-       div.transition()
-         .duration(200)
-         .style("opacity", .9);
-       div.html(d.data.name + "<br/>" + d3.format("($,.2f")(d.value))
-         .style("left", (d3.event.pageX) + "px")
-         .style("top", (d3.event.pageY - 28) + "px");
-   }
-       )
-     .on("mouseout", function(d) {
-       div.transition()
-         .duration(500)
-         .style("opacity", 0);
-       
-   });
-
   var node = g.selectAll("circle,text");
-
 
   svg
       .on("click", function() { zoom(root); });

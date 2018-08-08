@@ -84,22 +84,23 @@ d3.json("./data.json", function(error, root) {
          .duration(200)
          .style("opacity", .9);
      if (d.parent===root){
-       div.html("Industry:" +"<br/>"+d.data.name +"<br/>" + d3.format("($,.2f")(d.value))
+       div.html('Industry:' +'<br/>'+ d.data.name +
+        '<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else if (d.data.name === "Unknown Parent Org"){
-      div.html(d.parent.data.name +"<br/>"+  d3.format("($,.2f")(d.value))
+      div.html(d.parent.data.name +'<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else if (d.children){
-     	div.html("Parent Organization:"+"<br/>"+d.data.name + "<br/>" + d3.format("($,.2f")(d.value))
+     	div.html("Parent Organization:"+'<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else{
-     	div.html(d.data.name + "<br/>" + d3.format("($,.2f")(d.value))
+     	div.html(d.data.name + '<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }

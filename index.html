@@ -29,7 +29,7 @@ div.tooltip {
   text-align: center;
   text-anchor: middle;
   min-width: 80px;
-  font: 24px Georgia, sans-serif;
+  font: 24px Helvetica, sans-serif;
   height: auto;
   padding: 10px;
   background: none repeat scroll 0 0 #EDE3DD;
@@ -84,22 +84,22 @@ d3.json("./data.json", function(error, root) {
          .style("opacity", .9);
      if (d.parent===root){
        div.html('Industry:' +'<br/>'+ d.data.name +
-        '<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
+        '<div style="font: 24px Helvetica">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else if (d.data.name === "Unknown Parent Org"){
-      div.html("Small " + d.parent.data.name+ d3.format("($,.2f")(d.value))
+      div.html("Small "+ d.parent.data.name +'<div style="font: 24px Helvetica">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else if (d.children){
-     	div.html("Parent Organization:"+'<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
+     	div.html("Parent Organization:"+'<div style="font: 24px Helvetica">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }
      else{
-     	div.html(d.data.name + '<div style="font: 24px Georgia">' + d3.format("($,.2f")(d.value)+'</div>')
+     	div.html(d.data.name + '<div style="font: 24px Helvetica">' + d3.format("($,.2f")(d.value)+'</div>')
          .style("left", (d3.event.pageX) + "px")
          .style("top", (d3.event.pageY - 80) + "px");
      }

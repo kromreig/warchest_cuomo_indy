@@ -126,6 +126,7 @@ d3.json("./data.json", function(error, root) {
           var i = d3.interpolateZoom(view, [focus.x, focus.y, focus.r * 2 + margin]);
           return function(t) { zoomTo(i(t)); };
         });
+
   }
 
   function zoomTo(v) {
